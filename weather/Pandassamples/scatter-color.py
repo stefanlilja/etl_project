@@ -1,12 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
+current_dir_path = os.path.dirname(os.path.realpath(__file__))
+parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
 # reading the database
-data = pd.read_json("tips.json")
+data = pd.read_json(parent_dir_path + "\\data\\weather\\cleansed\\data.json", orient='records')
 
 # Scatter plot with day against tip
-plt.scatter(data['day'], data['tip'], c=data['size'],
-			s=data['total_bill'])
+plt.scatter(data['datetime'], data['temperature'], c=data['temperature'])
 
 # Adding Title to the Plot
 plt.title("Scatter Plot")

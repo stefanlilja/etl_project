@@ -6,10 +6,10 @@ import os
 current_dir_path = os.path.dirname(os.path.realpath(__file__))
 parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
 # reading the database
-data = pd.read_json(parent_dir_path + "\\data\\weather\\harmonized\\data.json", orient='records')
+data = pd.read_json(parent_dir_path + "\\data\\weather\\cleansed\\data.json", orient='records')
 
 # Scatter plot with day against tip
-plt.plot(data['time'], data['data_instant_details_air_temperature'])
+plt.plot(data['datetime'], data['temperature'])
 
 
 
