@@ -12,12 +12,13 @@ def connectdb():
 
 current_dir_path = os.path.dirname(os.path.realpath(__file__))
 parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
-df = pd.read_json(parent_dir_path + "\\data\\weather\\cleansed\\data.json", orient='records')
+
 
 column_names = "location_id, current_datetime, forecast_datetime, temperature, cloud_area_fraction,\
                 humidity, wind_speed, weather_description, precipitation"
 
-def insert(conn, location_id, current_datetime, df):
+def insert(conn, location_id, current_datetime, filename):
+    df = pd.read_json(parent_dir_path + f"\\data\\weather\\cleansed\\{filename}.json", orient='records')
     conn = connectdb()
     cur = conn.cursor()
     for i in range(len(df)):
@@ -40,11 +41,11 @@ def replace_nan_value(value):
     else:
         return value
 
-current_datetime ='2023-01-19 12:00:00+00:00'
-conn = connectdb()
-cape_town_id = 6
+# current_datetime ='2023-01-19 12:00:00+00:00'
+# conn = connectdb()
+# cape_town_id = 6
 
-insert(conn, cape_town_id, current_datetime, df)
+# insert(conn, cape_town_id, current_datetime, df)
 
 
 # for i in range(len(df)):
