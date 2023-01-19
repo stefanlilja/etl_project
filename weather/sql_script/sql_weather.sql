@@ -21,3 +21,16 @@ CREATE TABLE forecast (
 	FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
+SELECT * FROM location;
+
+INSERT INTO location (continent, country, city, latitude, longitude) 
+VALUES
+('Europe', 'Norway', 'Svalbard', '78', '17'), 
+('Europe', 'Sweden', 'Åkersberga', '59', '18'), 
+('Europe', 'Vatican', 'Vatican city', '42', '12'), 
+('Africa', 'Tchad', 'N´Djamena', '12', '15'), 
+('Africa', 'Congo', 'Kinshasa', '-4', '15'), 
+('Africa', 'South Africa', 'Cape town', '-34', '18'), 
+('Antarctica', 'Antarctica', 'Princess Elizabeth station', '-72', '23');
+
+
