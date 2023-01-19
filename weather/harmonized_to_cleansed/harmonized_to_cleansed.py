@@ -28,7 +28,9 @@ df.rename(
     },
     inplace=True
 )
-df = df.iloc[:62] # rows 63 and onwards have no values for weather descripition and precipitation
+# df = df.iloc[:62] 
+# rows 63 and onwards have no values for weather descripition and precipitation
+
 #print(df.to_string())
 
 df.to_json(parent_dir_path + "\\data\\weather\\cleansed\\data.json", orient='records')
