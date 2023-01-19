@@ -21,7 +21,7 @@ CREATE TABLE forecast (
 	FOREIGN KEY (location_id) REFERENCES location(id)
 );
 
-SELECT * FROM location;
+SELECT * FROM forecast;
 
 INSERT INTO location (continent, country, city, latitude, longitude) 
 VALUES
