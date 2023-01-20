@@ -4,7 +4,7 @@ import os
 
 def connectdb():
     conn = psycopg2.connect(
-        host="172.18.128.1",
+        host="172.18.128.1", #run """ sudo cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }' """ in ubuntu to get current ip
         database="etl_mini_project",
         user="postgres",
         password="continuousimpliesintegrable")
