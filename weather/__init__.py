@@ -19,6 +19,10 @@ def download_from_api():
         filename = name + time.strftime('%Y_%m_%d')
         str.write_to_file(data, filename)
 
+def testing():
+    data_test = str.request_from_url(cape_town_url)
+
+    str.write_to_file(data_test, 'testing_data')
 
 if __name__ == '__main__':
     download_from_api()

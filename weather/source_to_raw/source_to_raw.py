@@ -11,7 +11,7 @@ def request_from_url(url):
     return r.json()
 
 def write_to_file(dict, filename):    
-    with open(parent_dir_path + f'\\data\\weather\\raw\\{filename}.json', 'w') as file:
+    with open(parent_dir_path + f'/data/weather/raw/{filename}.json', 'w') as file:
         json.dump(dict, file)
 
 
