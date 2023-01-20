@@ -30,8 +30,6 @@ df = df[df['current_datetime']=='2023-01-20 13:21:29.46907']
 print(df.tail(5))
 figure = px.line(df, x = "forecast_datetime", y = "temperature", markers = True, color = "location_id")
 
-
-
 figure.update_layout(
 #legend=dict(itemsizing='constant',labeling='label'),
 font_family = "Arial",
