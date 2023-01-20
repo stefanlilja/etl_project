@@ -4,10 +4,10 @@ import os
 
 def connectdb():
     conn = psycopg2.connect(
-        host="localhost",
+        host="172.18.128.1",
         database="etl_mini_project",
         user="postgres",
-        password="sudden21")
+        password="continuousimpliesintegrable")
     return conn
 
 current_dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -17,8 +17,8 @@ parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
 column_names = "location_id, current_datetime, forecast_datetime, temperature, cloud_area_fraction,\
                 humidity, wind_speed, weather_description, precipitation"
 
-def insert(conn, location_id, current_datetime, filename):
-    df = pd.read_json(parent_dir_path + f"\\data\\weather\\cleansed\\{filename}.json", orient='records')
+def insert(location_id, current_datetime, filename):
+    df = pd.read_json(parent_dir_path + f"/data/weather/cleansed/{filename}.json", orient='records')
     conn = connectdb()
     cur = conn.cursor()
     for i in range(len(df)):

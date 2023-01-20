@@ -7,8 +7,8 @@ from random import randint
 import sys 
 import os
 import glob
-sys.path.append('/mnt/c/Users/annik/Code/ETLmini/etl_project/')
-paths = glob.glob('/mnt/c/Users/annik/Code/ETLmini/etl_project/*')
+sys.path.append('/mnt/c/Users/Stefan/Documents/Modul9/etl_project/')
+paths = glob.glob('/mnt/c/Users/Stefan/Documents/Modul9/etl_project/*')
 
 for path in paths:
     if os.path.isdir(path):
@@ -32,6 +32,18 @@ with DAG(
         task_id = "download_data",
         python_callable=weather.download_from_api
     )
+    raw_to_harm = PythonOperator(
+        task_id = "raw_to_harm",
+        python_callable=weather.raw_to_harm
+    )
+    harm_to_cleansed = PythonOperator(
+        task_id = "harm_to_cleansed",
+        python_callable=weather.harm_to_cleansed
+    )
+    cleansed_to_staged = PythonOperator(
+        task_id = "cleansed_to_staged",
+        python_callable=weather.cleansed_to_staged
+    )
     
 
-    [download_data]
+    download_data >> raw_to_harm >> harm_to_cleansed >> cleansed_to_staged

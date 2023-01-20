@@ -8,6 +8,7 @@ from datetime import datetime
 
 cape_town_url = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=-34&lon=18'
 
+location_ids = list(range(1,8))
 location_names = ['Svalbard', 'Åkersberga', 'Vatican_city', "N_Djamena", 'Kinshasa', 'Cape_town', 'Princess_Elizabeth_station']
 location_coordinates = [('78', '17'), ('59', '18'), ('42', '12'), ('12', '15'), ('-4', '15'), ('-34', '18'), ('-72', '23')]
 time = datetime.now()
@@ -30,6 +31,19 @@ def raw_to_harm():
         filename = name + time.strftime('%Y_%m_%d')
         data = rth.read_raw_data(filename)
         rth.write_to_harmonized(data, filename)
+
+def harm_to_cleansed():
+    for name in (location_names):
+        filename = name + time.strftime('%Y_%m_%d')
+        htc.cleanse_data(filename)
+
+
+def cleansed_to_staged():
+    for name, id in zip(location_names, location_ids):
+        filename = name + time.strftime('%Y_%m_%d')
+        di.insert(id, time, filename)   
+        
+
 
 if __name__ == '__main__':
     download_from_api()

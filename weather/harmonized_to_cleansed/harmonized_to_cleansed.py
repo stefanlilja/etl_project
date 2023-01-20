@@ -7,7 +7,7 @@ current_dir_path = os.path.dirname(os.path.realpath(__file__))
 parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
 
 def cleanse_data(filename):
-    df = pd.read_json(parent_dir_path + f"\\data\\weather\\harmonized\\{filename}.json", orient='records')
+    df = pd.read_json(parent_dir_path + f"/data/weather/harmonized/{filename}.json", orient='records')
     df.drop(
         columns=[
             'data_instant_details_air_pressure_at_sea_level',
@@ -34,5 +34,5 @@ def cleanse_data(filename):
 
     #print(df.to_string())
 
-    df.to_json(parent_dir_path + f"\\data\\weather\\cleansed\\{filename}.json", orient='records')
+    df.to_json(parent_dir_path + f"/data/weather/cleansed/{filename}.json", orient='records')
 
