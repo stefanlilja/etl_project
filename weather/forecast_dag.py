@@ -7,8 +7,8 @@ from random import randint
 import sys 
 import os
 import glob
-sys.path.append('/mnt/c/Users/Stefan/Documents/Modul9/etl_project/')
-paths = glob.glob('/mnt/c/Users/Stefan/Documents/Modul9/etl_project/*')
+sys.path.append('/mnt/c/Users/annik/Code/ETLmini/etl_project/')
+paths = glob.glob('/mnt/c/Users/annik/Code/ETLmini/etl_project/*')
 
 for path in paths:
     if os.path.isdir(path):

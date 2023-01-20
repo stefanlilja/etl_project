@@ -8,7 +8,7 @@ parent_dir_path = os.path.abspath(os.path.join(current_dir_path, os.pardir))
 
 
 def read_raw_data(filename):    
-    with open(parent_dir_path + f'\\data\\weather\\raw\\{filename}.json', 'r') as file:
+    with open(parent_dir_path + f'/data/weather/raw/{filename}.json', 'r') as file:
         raw_text = file.readline()
 
     raw_data = json.loads(raw_text)
@@ -20,7 +20,7 @@ def read_raw_data(filename):
 
 
 def write_to_harmonized(df, filename):
-    filepath = parent_dir_path + f'\\data\\weather\\harmonized\\{filename}.json'
+    filepath = parent_dir_path + f'/data/weather/harmonized/{filename}.json'
     df.to_json(filepath, orient='records')
     
 
