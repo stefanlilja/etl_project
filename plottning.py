@@ -1,6 +1,8 @@
 import psycopg2
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px 
+
 
 
 conn = psycopg2.connect(
@@ -23,42 +25,27 @@ cur.close()
 conn.close()
 
 df = pd.DataFrame(data, columns=[desc[0] for desc in cur.description])
-"""
-plt.plot(df['forecast_datetime'], df['temperature'], label='Temperature')
-plt.title("Weather Forecast")
-plt.xlabel("Forecast DateTime")
-plt.ylabel("Temperature")
 
 
-# Create a bar plot of cloud_area_fraction and forecast_datetime
-plt.bar(df['forecast_datetime'], df['cloud_area_fraction'], label='Cloud Area Fraction')
-plt.title("Weather Forecast")
-plt.xlabel("Forecast DateTime")
-plt.ylabel("Values")
+figure = px.line(df, x = "forecast_datetime", y = "temperature", color = "location_id")
 
-# Create a scatter plot of humidity and forecast_datetime
-plt.scatter(df['forecast_datetime'], df['humidity'], label='Humidity')
-plt.title("Weather Forecast")
-plt.xlabel("Forecast DateTime")
-plt.ylabel("Values")
-
-# Create a line plot of wind_speed and forecast_datetime
-plt.plot(df['forecast_datetime'], df['wind_speed'], label='Wind Speed')
-plt.title("Weather Forecast")
-plt.xlabel("Forecast DateTime")
-plt.ylabel("Windspeed")
-plt.show()
-"""
+figure.update_layout(
+font_family = "Arial",
+font_color = "#000000",
+font_size = 20,
+legend_title = "Countries",
+title_font_family = "Verdana",
+title_font_size = 30,
+title_font_color = "#ACACAC",
+#legend_title_font_color = "green" # 
+yaxis_title = "Temperature",
+title = "Forecast",
+showlegend=True,
+)
+figure.show()
 
 
-# Create a bar plot of precipitation and forecast_datetime
-plt.bar(df['forecast_datetime'], df['precipitation'], label='Precipitation')
-plt.title("Weather Forecast")
-plt.xlabel("Forecast DateTime")
-plt.ylabel("Precipitation")
-plt.show()
 
 
-# Display the plot
 
 
