@@ -28,7 +28,7 @@ conn.close()
 
 df = pd.DataFrame(data, columns=[desc[0] for desc in cur.description])
 
-df = df[df['current_datetime']=='2023-01-20 13:21:29.46907']
+df = df[df['current_datetime']=='2023-01-23 09:35:42.470815']
 
 
 app = Dash()
@@ -62,7 +62,7 @@ def graph_update(radio_values):
     font_family = "Arial",
     font_color = "#000000",
     font_size = 20,
-    legend_title = "Countries",
+    legend_title = "Locations",
     title_font_family = "Verdana",
     title_font_size = 30,
     title_font_color = "#ACACAC",
